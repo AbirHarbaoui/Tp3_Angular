@@ -1,0 +1,67 @@
+
+<h1>{{ titre }}</h1>
+<ul>
+  <li *ngFor="let t of tab; let indice = index">
+    Position : {{ indice + 1 }} - Élément : {{ t }} 
+    <button (click)="afficherPosition(t, indice)">Position</button>
+  </li>
+</ul>
+
+
+
+<h2>{{ titre }}</h2>
+<ul>
+  <li *ngFor="let t of tab; let indice = index">
+    <ng-container *ngIf="t % 2 === 0">
+      Position : {{ indice + 1 }} - Élément pair : {{ t }} 
+      <button (click)="afficherPosition(t, indice)">Position</button>
+    </ng-container>
+  </li>
+</ul>
+
+
+<h1>{{ titre }}</h1>
+<ul>
+  <li *ngFor="let t of tab; let indice = index">
+    Position : {{ indice + 1 }} - Élément : {{ t }} ({{ convertirEnTexte(t) }})
+    <button (click)="afficherPosition(t, indice)">Position</button>
+  </li>
+</ul>
+
+
+
+<h1>{{ titre }}</h1>
+<ol>
+  <li *ngFor="let t of tab">
+    <ng-container [ngSwitch]="t">
+      <p *ngSwitchCase="0">Zéro</p>
+      <p *ngSwitchCase="15">Quinze</p>
+      <p *ngSwitchDefault>Seize ou plus</p>
+    </ng-container>
+    {{ t }}
+  </li>
+</ol>
+
+
+
+<h2>{{ titre }}</h2>
+<button class="btn btn-{{ style === 'italic' ? 'success' : 'danger' }}" (click)="toggleStyle()">
+  {{ style === 'italic' ? 'Italique' : 'Normal' }}
+</button>
+<ul>
+  <li *ngFor="let t of tab">
+    <i [ngClass]="{ 'fa': true, 'fa-arrow-circle-down': t < 50, 'fa-arrow-circle-up': t >= 50 }"></i>
+    <span [ngStyle]="{ color: colorier(t), 'font-style': style }">{{ t }}</span>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
